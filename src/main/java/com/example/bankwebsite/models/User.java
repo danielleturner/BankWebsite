@@ -35,7 +35,7 @@ public class User {
     (nullable = false, length = 50, unique = true)
     private String password;
 
-    @OneToOne
+    @ManyToOne
     private User owner;
 
     /*Constructors**/
