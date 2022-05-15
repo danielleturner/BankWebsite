@@ -1,6 +1,7 @@
 package com.example.bankwebsite.controllers;
 
 
+
 import com.example.bankwebsite.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,12 +16,9 @@ public class HomePageController {
     public String loginPage(){
 
 
-        return "loginPage";
+        return "users/loginPage";
     }
 
-    @GetMapping("/register")
-    public String showSignUpForm(Model model) {
-        model.addAttribute("user", new User());
-        return "/users/register";
-    }
+
+
 }

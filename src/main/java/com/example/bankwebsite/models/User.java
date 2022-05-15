@@ -35,13 +35,37 @@ public class User {
     (nullable = false, length = 50, unique = true)
     private String password;
 
+    @Column
+    (nullable = false, length = 50, unique = true)
+    private String email;
+
+    @Column
+    (nullable = false, length = 50, unique = true)
+    private String username;
+
     @ManyToOne
     private User owner;
 
     /*Constructors**/
     public User(){}
 
-    public User(Long id, String first_Mi_LastName, Long checkingAccountNumber, Long checkingAccountBalance, Long savingsAccountNumber, Long savingsAccountBalance, String password, User owner) {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public User(Long id, String first_Mi_LastName, String email, String username, Long checkingAccountNumber, Long checkingAccountBalance, Long savingsAccountNumber, Long savingsAccountBalance, String password, User owner) {
         this.id = id;
         First_Mi_LastName = first_Mi_LastName;
         CheckingAccountNumber = checkingAccountNumber;
@@ -49,8 +73,11 @@ public class User {
         SavingsAccountNumber = savingsAccountNumber;
         SavingsAccountBalance = savingsAccountBalance;
         this.password = password;
+        this.username = username;
+        this.email = email;
         this.owner = owner;
     }
+
 
     /*Getters and Setters**/
 
@@ -117,4 +144,14 @@ public class User {
     public void setOwner(User owner) {
         this.owner = owner;
     }
+
+
+
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
+
 }
